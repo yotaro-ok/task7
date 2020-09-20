@@ -89,8 +89,6 @@
             </div>
         </div>
     </body>
-    <!-- script src="js/three.min.js"></script>
-    <script src="js/gio.min.js"></script -->
     <script src="js/sampleData.js"></script>
     <script>
         var container = document.getElementById("globalArea");
