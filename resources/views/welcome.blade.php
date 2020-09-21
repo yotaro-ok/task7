@@ -12,8 +12,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #000000;
+                color: #ffffff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -91,8 +91,10 @@
     </body>
     <script src="js/sampleData.js"></script>
     <script>
-        var container = document.getElementById("globalArea");
-        var controller = new gio.Controller(container);
+        const container = document.getElementById("globalArea");
+        const controller = new gio.Controller(container);
+        controller.setInitCountry("JP");
+        controller.setStyle("mint");
         controller.addData(data);
         controller.init();
     </script>
