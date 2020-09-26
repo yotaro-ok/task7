@@ -63,7 +63,7 @@
             }
         </style>
 
-        <script src="js/app.js"></script>
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -89,13 +89,28 @@
             </div>
         </div>
     </body>
-    <script src="js/sampleData.js"></script>
-    <script>
-        const container = document.getElementById("globalArea");
-        const controller = new gio.Controller(container);
-        controller.setInitCountry("JP");
-        controller.setStyle("mint");
-        controller.addData(data);
-        controller.init();
+    <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/sampleData.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+                type:'GET',
+                url:'/sampleData.json',
+                dataType:'json',
+            }).done(function (results){
+                const container = document.getElementById("globalArea");
+                const controller = new gio.Controller(container);
+                controller.setInitCountry("JP");
+                controller.setStyle("mint");
+                controller.addData(results);
+                controller.init();
+            }).fail(function(jqXHR,textStatus,errorThrown){
+                alert('ファイルの取得に失敗しました。');
+                console.log("ajax通信に失敗しました")
+                console.log(jqXHR.status);
+                console.log(textStatus);
+                console.log(errorThrown.message);
+            });
+        });
     </script>
 </html>
