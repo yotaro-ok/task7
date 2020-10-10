@@ -94,7 +94,7 @@
         $(document).ready(function(){
             $.ajax({
                 type:'GET',
-                url:'/sampleData.json',
+                url:'gio_data',
                 dataType:'json',
             }).done(function (results){
                 const container = document.getElementById("globalArea");
