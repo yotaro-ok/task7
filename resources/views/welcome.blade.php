@@ -113,11 +113,11 @@
                 const controller = new gio.Controller(container);
                 controller.setInitCountry("JP");
                 // controller.setStyle("mint");
-                controller.setTransparentBackground( true );
+                controller.setTransparentBackground(true);
                 controller.addData(results);
                 controller.init();
             }).fail(function(jqXHR,textStatus,errorThrown){
-                alert('ファイルの取得に失敗しました。');
+                alert('データの取得に失敗しました。');
                 console.log("ajax通信に失敗しました")
                 console.log(jqXHR.status);
                 console.log(textStatus);
