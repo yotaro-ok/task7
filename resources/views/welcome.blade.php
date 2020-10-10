@@ -13,11 +13,21 @@
         <style>
             html, body {
                 background-color: #000000;
+                background-image: url('./img/matrix.gif');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
                 color: #ffffff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+
+            #globalArea {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
             }
 
             .full-height {
@@ -45,7 +55,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 72px;
             }
 
             .links > a {
@@ -85,7 +95,9 @@
                 <div class="title m-b-md">
                     yps task#7
                 </div>
-                <div id="globalArea" style="width:1000px;height:700px"></div>
+                <div id="globalArea" style="width: 1000px; height: 700px;">
+                    <!-- canvas width="1000" height="700" style="width: 1000px; height: 700px;"></canvas -->
+                </div>
             </div>
         </div>
     </body>
@@ -99,9 +111,9 @@
             }).done(function (results){
                 const container = document.getElementById("globalArea");
                 const controller = new gio.Controller(container);
-                console.log(results);
                 controller.setInitCountry("JP");
-                controller.setStyle("mint");
+                // controller.setStyle("mint");
+                controller.setTransparentBackground( true );
                 controller.addData(results);
                 controller.init();
             }).fail(function(jqXHR,textStatus,errorThrown){
