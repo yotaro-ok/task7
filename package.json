@@ -20,7 +20,6 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "giojs": "^2.2.2",
-        "json2csv": "^5.0.3"
+        "giojs": "^2.2.2"
     }
 }

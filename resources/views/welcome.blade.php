@@ -93,12 +93,13 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $.ajax({
-                type:'GET',
+                method:'GET',
                 url:'gio_data',
                 dataType:'json',
             }).done(function (results){
                 const container = document.getElementById("globalArea");
                 const controller = new gio.Controller(container);
+                console.log(results);
                 controller.setInitCountry("JP");
                 controller.setStyle("mint");
                 controller.addData(results);
