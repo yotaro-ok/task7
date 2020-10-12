@@ -30,9 +30,7 @@ class GioController extends Controller
         */
 
         return response()->json(
-            RandSample::whereIn('e', RandSample::COUNTRY_INFO)
-                            ->whereIn('i', RandSample::COUNTRY_INFO)
-                            ->get()
+            RandSample::get()
         );
     }
 

@@ -16,25 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `city`
---
-
-DROP TABLE IF EXISTS `city`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `city` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` char(35) NOT NULL DEFAULT '',
-  `CountryCode` char(3) NOT NULL DEFAULT '',
-  `District` char(20) NOT NULL DEFAULT '',
-  `Population` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`),
-  KEY `CountryCode` (`CountryCode`),
-  CONSTRAINT `city_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `countries`
 --
 
@@ -55,47 +36,16 @@ CREATE TABLE `countries` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `country`
+-- Table structure for table `gio_codes`
 --
 
-DROP TABLE IF EXISTS `country`;
+DROP TABLE IF EXISTS `gio_codes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `country` (
-  `Code` char(3) NOT NULL DEFAULT '',
-  `Name` char(52) NOT NULL DEFAULT '',
-  `Continent` enum('Asia','Europe','North America','Africa','Oceania','Antarctica','South America') NOT NULL DEFAULT 'Asia',
-  `Region` char(26) NOT NULL DEFAULT '',
-  `SurfaceArea` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `IndepYear` smallint(6) DEFAULT NULL,
-  `Population` int(11) NOT NULL DEFAULT '0',
-  `LifeExpectancy` decimal(3,1) DEFAULT NULL,
-  `GNP` decimal(10,2) DEFAULT NULL,
-  `GNPOld` decimal(10,2) DEFAULT NULL,
-  `LocalName` char(45) NOT NULL DEFAULT '',
-  `GovernmentForm` char(45) NOT NULL DEFAULT '',
-  `HeadOfState` char(60) DEFAULT NULL,
-  `Capital` int(11) DEFAULT NULL,
-  `Code2` char(2) NOT NULL DEFAULT '',
-  PRIMARY KEY (`Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `countrylanguage`
---
-
-DROP TABLE IF EXISTS `countrylanguage`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `countrylanguage` (
-  `CountryCode` char(3) NOT NULL DEFAULT '',
-  `Language` char(30) NOT NULL DEFAULT '',
-  `IsOfficial` enum('T','F') NOT NULL DEFAULT 'F',
-  `Percentage` decimal(4,1) NOT NULL DEFAULT '0.0',
-  PRIMARY KEY (`CountryCode`,`Language`),
-  KEY `CountryCode` (`CountryCode`),
-  CONSTRAINT `countryLanguage_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`)
+CREATE TABLE `gio_codes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `code2` varchar(2) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,4 +106,4 @@ CREATE TABLE `samples` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-10 22:06:36
+-- Dump completed on 2020-10-12 19:52:44
