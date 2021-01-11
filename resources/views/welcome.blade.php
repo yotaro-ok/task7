@@ -13,7 +13,9 @@
         <style>
             html, body {
                 background-color: #000000;
+            {{--
                 background-image: url('./img/matrix.gif');
+            --}}
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
                 color: #ffffff;
@@ -76,6 +78,7 @@
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
+        {{-- <canvas id="q"> --}}
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -96,10 +99,11 @@
                     yps task#7
                 </div>
                 <div id="globalArea" style="width: 1000px; height: 700px;">
-                    <!-- canvas width="1000" height="700" style="width: 1000px; height: 700px;"></canvas -->
+                    {{-- canvas width="1000" height="700" style="width: 1000px; height: 700px;"></canvaas> --}}
                 </div>
             </div>
         </div>
+        {{-- </canvas> --}}
     </body>
     <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script type="text/javascript">
@@ -123,6 +127,24 @@
                 console.log(textStatus);
                 console.log(errorThrown.message);
             });
+
+            var s = window.screen;
+            var width = q.width = s.width;
+            var height = q.height = s.height;
+            var letters = Array(256).join(1).split('');
+
+            var draw = function () {
+                q.getContext('2d').fillStyle='rgba(0,0,0,.05)';
+                q.getContext('2d').fillRect(0,0,width,height);
+                q.getContext('2d').fillStyle='#0F0';
+                letters.map(function(y_pos, index){
+                    text = String.fromCharCode(3e4+Math.random()*33);
+                    x_pos = index * 10;
+                    q.getContext('2d').fillText(text, x_pos, y_pos);
+                    letters[index] = (y_pos > 758 + Math.random() * 1e4) ? 0 : y_pos + 10;
+                });
+            };
+            setInterval(draw, 33);
         });
     </script>
 </html>
